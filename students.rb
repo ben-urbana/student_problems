@@ -108,32 +108,26 @@ def blood_donor (blood, students, student)
 
 	if type == "A"
 		blood.each_with_index do |types, i|
-			if types == "O" || types == "A" || types == "AB"
+			if types == "O" || types == "A"
 				donors.push(students[i])
 				number_of_donors += 1
 			end
 		end
-	end
-
-	if type == "AB"
+	elsif type == "AB"
 		blood.each_with_index do |types, i|
 			if types == "O" || types == "A" || types == "AB" || types == "B"
 				donors.push(students[i])
 				number_of_donors += 1
 			end
 		end
-	end
-
-	if type == "B"
+	elsif type == "B"
 		blood.each_with_index do |types, i|
-			if types == "O" || types == "B" || types == "AB"
+			if types == "O" || types == "B"
 				donors.push(students[i])
 				number_of_donors += 1
 			end
 		end
-	end
-
-	if type == "O"
+	elsif type == "O"
 		blood.each_with_index do |types, i|
 			if types == "O"
 				donors.push(students[i])
