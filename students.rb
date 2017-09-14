@@ -1,3 +1,5 @@
+$stdout.sync = true
+
 students = []
 eye_colors = []
 ages = []
@@ -93,6 +95,58 @@ def age_of_green (ages, eye_colors)
 	return average_age / number
 end
 
+def blood_donor (blood, students, student)
+	donors = []
+	number_of_donors = 0
+	type = ""
+
+	students.each_with_index do |kid, i|
+		if kid == student
+			type = blood[i]
+		end
+	end
+
+	if type == "A"
+		blood.each_with_index do |types, i|
+			if types == "O" || types == "A" || types == "AB"
+				donors.push(students[i])
+				number_of_donors += 1
+			end
+		end
+	end
+
+	if type == "AB"
+		blood.each_with_index do |types, i|
+			if types == "O" || types == "A" || types == "AB" || types == "B"
+				donors.push(students[i])
+				number_of_donors += 1
+			end
+		end
+	end
+
+	if type == "B"
+		blood.each_with_index do |types, i|
+			if types == "O" || types == "B" || types == "AB"
+				donors.push(students[i])
+				number_of_donors += 1
+			end
+		end
+	end
+
+	if type == "O"
+		blood.each_with_index do |types, i|
+			if types == "O"
+				donors.push(students[i])
+				number_of_donors += 1
+			end
+		end
+	end
+	return donors
+end
+
+
+
+
 
 print students, "\n"
 print eye_colors, "\n"
@@ -108,4 +162,8 @@ print amount_of_green_girls(eye_colors, students), "\n"
 
 print vowels(ages, students), "\n"
 
-print age_of_green(ages, eye_colors)
+print age_of_green(ages, eye_colors), "\n"
+
+puts "What student are you checking?"
+student = gets.chomp
+print "#{student} can be donated to by ",blood_donor(blood, students, student)
