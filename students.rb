@@ -136,8 +136,25 @@ def blood_donor (blood, students, student)
 		end
 	end
 	return donors
+	return number_of_donors 
 end
 
+def most_donors (students, blood)
+	most = []
+	n = 0
+	blood.each_with_index do |type, i|
+		if type == "AB"
+			most.push(students[i])
+		# elsif type == "A" || type == "B"
+		# 	most.push(students[i])
+		# elsif type == "O"
+		# 	most.push(students[i])					
+		else
+			n = n + 1
+		end
+	end
+	return most, n
+end
 
 
 
@@ -160,4 +177,7 @@ print age_of_green(ages, eye_colors), "\n"
 
 puts "What student are you checking?"
 student = gets.chomp
-print "#{student} can be donated to by ",blood_donor(blood, students, student)
+print "#{student} can be donated to by ",blood_donor(blood, students, student), "\n"
+
+print most_donors(students, blood), "\n"
+
